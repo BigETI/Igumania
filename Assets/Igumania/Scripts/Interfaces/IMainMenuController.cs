@@ -16,19 +16,25 @@ namespace Igumania
 
         event MainMenuHiddenDelegate OnMainMenuHidden;
 
-        event SettingsMenuShownDelegate OnSettingsMenuShown;
-
-        event SettingsMenuHiddenDelegate OnSettingsMenuHidden;
-
         event ProfilesMenuShownDelegate OnProfilesMenuShown;
 
         event ProfilesMenuHiddenDelegate OnProfilesMenuHidden;
 
+        event SettingsMenuShownDelegate OnSettingsMenuShown;
+
+        event SettingsMenuHiddenDelegate OnSettingsMenuHidden;
+
+        event CreditsMenuShownDelegate OnCreditsMenuShown;
+
+        event CreditsMenuHiddenDelegate OnCreditsMenuHidden;
+
         void ShowMainMenu();
+
+        void ShowProfilesMenu();
 
         void ShowSettingsMenu();
 
-        void ShowProfilesMenu();
+        void ShowCreditsMenu();
 
         void RequestExitingGame();
 

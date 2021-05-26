@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Igumania/Scenes/Menus/IntroMenuScene.unity
+    guid: 13f2ae9e8b949df4a9fabc0f9eb206bd
+  - enabled: 1
+    path: Assets/Igumania/Scenes/Menus/MainMenuScene.unity
+    guid: 82afdcb97e38f2e45b3d262ca161593c
+  - enabled: 1
     path: Assets/Igumania/Scenes/Games/GameScene.unity
     guid: 099feec46f5c76842b00d692b364ffbe
   m_configObjects: {}

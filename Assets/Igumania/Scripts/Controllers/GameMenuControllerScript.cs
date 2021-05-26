@@ -130,6 +130,8 @@ namespace Igumania.Controllers
 
         public void ShowGameMenu() => GameMenuState = EGameMenuState.ShopMenu;
 
+        public void ToggleGameMenu() => GameMenuState = (gameMenuState == EGameMenuState.GameMenu) ? EGameMenuState.Playing : EGameMenuState.GameMenu;
+
         public void RequestShowingMainMenu()
         {
             IsNotShowingDialog = false;
@@ -151,6 +153,8 @@ namespace Igumania.Controllers
         }
 
         public void ShowMainMenu() => SceneLoaderManager.LoadScenes("MainMenuScene");
+
+        public void SaveGame() => GameManager.SelectedProfile?.Save();
 
         private void Start() => GameMenuState = EGameMenuState.Playing;
 

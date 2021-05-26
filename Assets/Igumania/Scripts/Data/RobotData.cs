@@ -31,16 +31,16 @@ namespace Igumania.Data
 
         public IEnumerable<string> Parts => robotParts ??= new List<string>();
 
-        public RobotData(float elapsedTimeSinceLastLubricationElapsed, float elapsedTimeSinceLastRepair, IEnumerable<string> robotParts)
+        public RobotData(float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IEnumerable<string> robotParts)
         {
             if (robotParts == null)
             {
                 throw new ArgumentNullException(nameof(robotParts));
             }
-            if (elapsedTimeSinceLastLubricationElapsed < 0.0f)
+            if (elapsedTimeSinceLastLubrication < 0.0f)
             {
                 Debug.LogError("Elapsed time since last lubrication can't be negative.");
-                throw new ArgumentException("", nameof(elapsedTimeSinceLastLubricationElapsed));
+                throw new ArgumentException("", nameof(elapsedTimeSinceLastLubrication));
             }
             if (elapsedTimeSinceLastRepair < 0.0f)
             {
@@ -48,7 +48,7 @@ namespace Igumania.Data
                 throw new ArgumentException("", nameof(elapsedTimeSinceLastRepair));
             }
             this.robotParts = new List<string>(robotParts ?? throw new ArgumentNullException(nameof(robotParts)));
-            this.elapsedTimeSinceLastLubrication = elapsedTimeSinceLastLubricationElapsed;
+            this.elapsedTimeSinceLastLubrication = elapsedTimeSinceLastLubrication;
             this.elapsedTimeSinceLastRepair = elapsedTimeSinceLastRepair;
         }
 

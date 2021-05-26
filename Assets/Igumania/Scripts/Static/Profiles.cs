@@ -98,6 +98,10 @@ namespace Igumania
             if (save_game.Data != null)
             {
                 ret = save_game.Data.RemoveProfile(profileIndex);
+                if (ret)
+                {
+                    save_game.Save();
+                }
             }
             return ret;
         }

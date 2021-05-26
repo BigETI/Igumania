@@ -3,7 +3,15 @@ guid: 28f4a36c92649c44cb11bd5d4134d59a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - noProfileStringTranslation: {fileID: 11400000, guid: c36fa4dbccf7e4946b55be37023f1b3d, type: 2}
+  - productionLevelStringFormatStringTranslation: {instanceID: 0}
+  - moneyStringFormatStringTranslation: {instanceID: 0}
+  - deleteProfileTitleStringTranslation: {fileID: 11400000, guid: 49d1c51f84c5d5b4883e355662bad66d, type: 2}
+  - deleteProfileMessageStringTranslation: {fileID: 11400000, guid: 92f5bb230964e0a4d8bacc8b0cc32851, type: 2}
+  - profileNameText: {instanceID: 0}
+  - productionLevelText: {instanceID: 0}
+  - moneyText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
