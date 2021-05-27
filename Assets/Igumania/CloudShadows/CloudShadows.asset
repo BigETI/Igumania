@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c53b636636e8245ac040678333b645, type: 3}
+  m_Name: CloudShadows
+  m_EditorClassIdentifier: 
+  CS_Clouds1: {fileID: 2800000, guid: 302cf2d2698dce2458783ebf7d0c101d, type: 3}
+  CS_Clouds2: {fileID: 2800000, guid: cd6183c04acbec649a31d32987b47c11, type: 3}
+  CS_BaseSpeed: 0.25
+  CS_Speed1: {x: 0.05, y: -0.1, z: 0}
+  CS_Speed2: {x: -0.1, y: 0.03, z: 0}
+  CS_Tiling1: 0.5
+  CS_Tiling2: 1
+  CS_CloudsPower: 2
+  CS_CloudsMultiply: 0.45
+  CS_CloudsTransparency: 0
