@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 1790a6d911b3a134483879c2a7a81756
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - CS_Clouds1: {fileID: 2800000, guid: 302cf2d2698dce2458783ebf7d0c101d, type: 3}
+  - CS_Clouds2: {fileID: 2800000, guid: cd6183c04acbec649a31d32987b47c11, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
