@@ -169,8 +169,11 @@ namespace Igumania.Controllers
                     {
                         if (response == EDialogResponse.Yes)
                         {
-                            Profiles.RemoveProfile(profileIndex);
-                            InvokeProfileUnloadedEvent();
+                            if (Profiles.RemoveProfile(profileIndex))
+                            {
+                                InvokeProfileUnloadedEvent();
+                                SceneLoaderManager.LoadScenes("MainMenuScene");
+                            }
                         }
                     }
                 );

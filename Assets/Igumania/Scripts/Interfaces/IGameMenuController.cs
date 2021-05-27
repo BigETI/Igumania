@@ -30,8 +30,12 @@ namespace Igumania
 
         void ShowGameMenu();
 
+        void ToggleGameMenu();
+
         void RequestShowingMainMenu();
 
         void ShowMainMenu();
+
+        void SaveGame();
     }
 }

@@ -69,7 +69,7 @@ namespace Igumania.Data
                 RobotData robot = robots[robot_index];
                 this.robots[robot_index] = (robot == null) ? null : new RobotData(robot.ElapsedTimeSinceLastLubrication, robot.ElapsedTimeSinceLastRepair, robot.Parts);
             }
-            this.upgrades.AddRange(upgrades);
+            this.upgrades = new List<string>(upgrades);
         }
 
         public void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades)

@@ -6,8 +6,10 @@
 
         MainMenu,
 
+        ProfilesMenu,
+
         SettingsMenu,
 
-        ProfilesMenu
+        CreditsMenu
     }
 }

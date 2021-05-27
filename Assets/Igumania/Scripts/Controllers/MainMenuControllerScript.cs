@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnitySceneLoaderManager;
 using UnityTranslator.Objects;
 
 namespace Igumania.Controllers
@@ -21,16 +22,22 @@ namespace Igumania.Controllers
         private UnityEvent onMainMenuHidden = default;
 
         [SerializeField]
+        private UnityEvent onProfilesMenuShown = default;
+
+        [SerializeField]
+        private UnityEvent onProfilesMenuHidden = default;
+
+        [SerializeField]
         private UnityEvent onSettingsMenuShown = default;
 
         [SerializeField]
         private UnityEvent onSettingsMenuHidden = default;
 
         [SerializeField]
-        private UnityEvent onProfilesMenuShown = default;
+        private UnityEvent onCreditsMenuShown = default;
 
         [SerializeField]
-        private UnityEvent onProfilesMenuHidden = default;
+        private UnityEvent onCreditsMenuHidden = default;
 
         private EMainMenuState mainMenuState = EMainMenuState.Nothing;
 
@@ -68,6 +75,13 @@ namespace Igumania.Controllers
                             }
                             OnMainMenuHidden?.Invoke();
                             break;
+                        case EMainMenuState.ProfilesMenu:
+                            if (onProfilesMenuHidden != null)
+                            {
+                                onProfilesMenuHidden.Invoke();
+                            }
+                            OnProfilesMenuHidden?.Invoke();
+                            break;
                         case EMainMenuState.SettingsMenu:
                             if (onSettingsMenuHidden != null)
                             {
@@ -75,12 +89,12 @@ namespace Igumania.Controllers
                             }
                             OnSettingsMenuHidden?.Invoke();
                             break;
-                        case EMainMenuState.ProfilesMenu:
-                            if (onProfilesMenuHidden != null)
+                        case EMainMenuState.CreditsMenu:
+                            if (onCreditsMenuHidden != null)
                             {
-                                onProfilesMenuHidden.Invoke();
+                                onCreditsMenuHidden.Invoke();
                             }
-                            OnProfilesMenuHidden?.Invoke();
+                            OnCreditsMenuHidden?.Invoke();
                             break;
                     }
                     switch (mainMenuState)
@@ -92,6 +106,13 @@ namespace Igumania.Controllers
                             }
                             OnMainMenuShown?.Invoke();
                             break;
+                        case EMainMenuState.ProfilesMenu:
+                            if (onProfilesMenuShown != null)
+                            {
+                                onProfilesMenuShown.Invoke();
+                            }
+                            OnProfilesMenuShown?.Invoke();
+                            break;
                         case EMainMenuState.SettingsMenu:
                             if (onSettingsMenuShown != null)
                             {
@@ -99,12 +120,12 @@ namespace Igumania.Controllers
                             }
                             OnSettingsMenuShown?.Invoke();
                             break;
-                        case EMainMenuState.ProfilesMenu:
-                            if (onProfilesMenuShown != null)
+                        case EMainMenuState.CreditsMenu:
+                            if (onCreditsMenuShown != null)
                             {
-                                onProfilesMenuShown.Invoke();
+                                onCreditsMenuShown.Invoke();
                             }
-                            OnProfilesMenuShown?.Invoke();
+                            OnCreditsMenuShown?.Invoke();
                             break;
                     }
                 }
@@ -117,19 +138,25 @@ namespace Igumania.Controllers
 
         public event MainMenuHiddenDelegate OnMainMenuHidden;
 
-        public event SettingsMenuShownDelegate OnSettingsMenuShown;
-
-        public event SettingsMenuHiddenDelegate OnSettingsMenuHidden;
-
         public event ProfilesMenuShownDelegate OnProfilesMenuShown;
 
         public event ProfilesMenuHiddenDelegate OnProfilesMenuHidden;
 
+        public event SettingsMenuShownDelegate OnSettingsMenuShown;
+
+        public event SettingsMenuHiddenDelegate OnSettingsMenuHidden;
+
+        public event CreditsMenuShownDelegate OnCreditsMenuShown;
+
+        public event CreditsMenuHiddenDelegate OnCreditsMenuHidden;
+
         public void ShowMainMenu() => MainMenuState = EMainMenuState.MainMenu;
+
+        public void ShowProfilesMenu() => MainMenuState = EMainMenuState.ProfilesMenu;
 
         public void ShowSettingsMenu() => MainMenuState = EMainMenuState.SettingsMenu;
 
-        public void ShowProfilesMenu() => MainMenuState = EMainMenuState.ProfilesMenu;
+        public void ShowCreditsMenu() => MainMenuState = EMainMenuState.CreditsMenu;
 
         public void RequestExitingGame()
         {
