@@ -1,8 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using NaughtyAttributes;
+using System;
+using UnityEngine;
+
+// TODO: Fix poor API design without breaking references
 
 [Serializable]
 public class RobotsVisualChangerTier : System.Object
@@ -13,7 +13,9 @@ public class RobotsVisualChangerTier : System.Object
 public class RobotsVisualsControllerScript : MonoBehaviour
 {
     [Dropdown("Tier")]
-    public int tier = 0;
+    public int tier;
+
+    private int lastTier;
 
     private DropdownList<int> Tier()
     {
@@ -28,12 +30,10 @@ public class RobotsVisualsControllerScript : MonoBehaviour
 
     public RobotsVisualChangerTier[] RobotTiers;
 
-    void Start()
+    private void UpdateVisuals()
     {
-        // For test purposes
         for (int i = 0; i <= 3; i++) foreach (GameObject part in RobotTiers[i].tierObjets) part.SetActive(false);
         foreach (GameObject part in RobotTiers[tier].tierObjets) part.SetActive(true);
-
     }
 
     public void UpgradeTier()
@@ -43,6 +43,17 @@ public class RobotsVisualsControllerScript : MonoBehaviour
             foreach (GameObject part in RobotTiers[tier].tierObjets) part.SetActive(false);
             tier++;
             foreach (GameObject part in RobotTiers[tier].tierObjets) part.SetActive(true);
+        }
+    }
+
+    private void Start() => UpdateVisuals();
+
+    private void Update()
+    {
+        if (lastTier != tier)
+        {
+            lastTier = tier;
+            UpdateVisuals();
         }
     }
 }

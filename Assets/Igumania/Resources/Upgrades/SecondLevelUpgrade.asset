@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7ba518c4200b246b0b1beaf3572d73, type: 3}
+  m_Name: SecondLevelUpgrade
+  m_EditorClassIdentifier: 
+  itemNameStringTranslation: {fileID: 11400000, guid: 450f6ac19ba22ab4c891ff5fbd59fc36, type: 2}
+  itemDescriptionStringTranslation: {fileID: 11400000, guid: 978c7a4fe8d82eb4dafedbc182e4f8a5, type: 2}
+  iconSpriteTranslation: {fileID: 11400000, guid: 29f4e391383ac1b4cabdb8de8687e7c5, type: 2}
+  url: 
+  cost: 0
+  profitAddition: 0
+  profitMultiplierAddition: 0
+  requiredUpgrades: []

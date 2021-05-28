@@ -29,6 +29,16 @@ namespace Igumania
 
         void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IEnumerable<RobotPartObjectScript> robotParts);
 
+        bool IsUpgradeInstalled(UpgradeObjectScript upgrade);
+
+        bool InstallUpgrade(UpgradeObjectScript upgrade);
+
+        void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades);
+
+        bool UninstallUpgrade(UpgradeObjectScript upgrade);
+
+        void UninstallAllUpgrades();
+
         bool Save();
     }
 }

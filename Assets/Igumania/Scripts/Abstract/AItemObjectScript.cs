@@ -15,6 +15,9 @@ namespace Igumania.Objects
         private SpriteTranslationObjectScript iconSpriteTranslation = default;
 
         [SerializeField]
+        private string url = string.Empty;
+
+        [SerializeField]
         private ulong cost;
 
         [SerializeField]
@@ -28,6 +31,8 @@ namespace Igumania.Objects
         public string ItemDescription => itemDescriptionStringTranslation ? itemDescriptionStringTranslation.ToString() : string.Empty;
 
         public Sprite IconSprite => iconSpriteTranslation ? iconSpriteTranslation.Sprite : null;
+
+        public string URL => url ?? string.Empty;
 
         public ulong Cost => cost;
 

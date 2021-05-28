@@ -120,6 +120,61 @@ namespace Igumania
             }
         }
 
+        public bool IsUpgradeInstalled(UpgradeObjectScript upgrade)
+        {
+            if (!upgrade)
+            {
+                throw new ArgumentNullException(nameof(upgrade));
+            }
+            return upgrades.ContainsKey(upgrade.name);
+        }
+
+        public bool InstallUpgrade(UpgradeObjectScript upgrade)
+        {
+            if (!upgrade)
+            {
+                throw new ArgumentNullException(nameof(upgrade));
+            }
+            string key = upgrade.name;
+            bool ret = !upgrades.ContainsKey(key);
+            if (ret)
+            {
+                upgrades.Add(key, upgrade);
+            }
+            return ret;
+        }
+
+        public void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades)
+        {
+            if (upgrades == null)
+            {
+                throw new ArgumentNullException(nameof(upgrades));
+            }
+            this.upgrades.Clear();
+            foreach (UpgradeObjectScript upgrade in upgrades)
+            {
+                if (upgrade)
+                {
+                    this.upgrades.Add(upgrade.name, upgrade);
+                }
+                else
+                {
+                    Debug.LogError("Upgrades contain null.");
+                }
+            }
+        }
+
+        public bool UninstallUpgrade(UpgradeObjectScript upgrade)
+        {
+            if (!upgrade)
+            {
+                throw new ArgumentNullException(nameof(upgrade));
+            }
+            return upgrades.Remove(upgrade.name);
+        }
+
+        public void UninstallAllUpgrades() => upgrades.Clear();
+
         public bool Save()
         {
             bool ret = false;

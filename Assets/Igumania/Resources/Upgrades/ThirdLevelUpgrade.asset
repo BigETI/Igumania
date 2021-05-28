@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7ba518c4200b246b0b1beaf3572d73, type: 3}
+  m_Name: ThirdLevelUpgrade
+  m_EditorClassIdentifier: 
+  itemNameStringTranslation: {fileID: 11400000, guid: 085576dbb0e3a6b4585914651b81ba82, type: 2}
+  itemDescriptionStringTranslation: {fileID: 11400000, guid: 456b0908f8c1fff44bb84a23336297a9, type: 2}
+  iconSpriteTranslation: {fileID: 11400000, guid: 30e3ff5d662cccd4d915a98396144a06, type: 2}
+  url: 
+  cost: 0
+  profitAddition: 0
+  profitMultiplierAddition: 0
+  requiredUpgrades:
+  - {fileID: 11400000, guid: c6943a6baf2b31a4ab56201943919154, type: 2}

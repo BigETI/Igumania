@@ -22,6 +22,9 @@ namespace Igumania.Controllers
         private UnityEvent onShopMenuShown = default;
 
         [SerializeField]
+        private UnityEvent onSelectRobotMenuShown = default;
+
+        [SerializeField]
         private UnityEvent onGameMenuShown = default;
 
         [SerializeField]
@@ -29,6 +32,9 @@ namespace Igumania.Controllers
 
         [SerializeField]
         private UnityEvent onShopMenuHidden = default;
+
+        [SerializeField]
+        private UnityEvent onSelectRobotMenuHidden = default;
 
         [SerializeField]
         private UnityEvent onGameMenuHidden = default;
@@ -74,6 +80,13 @@ namespace Igumania.Controllers
                             }
                             OnShopMenuHidden?.Invoke();
                             break;
+                        case EGameMenuState.SelectRobotMenu:
+                            if (onSelectRobotMenuHidden != null)
+                            {
+                                onSelectRobotMenuHidden.Invoke();
+                            }
+                            OnSelectRobotMenuHidden?.Invoke();
+                            break;
                         case EGameMenuState.GameMenu:
                             if (onGameMenuHidden != null)
                             {
@@ -98,6 +111,13 @@ namespace Igumania.Controllers
                             }
                             OnShopMenuShown?.Invoke();
                             break;
+                        case EGameMenuState.SelectRobotMenu:
+                            if (onSelectRobotMenuShown != null)
+                            {
+                                onSelectRobotMenuShown.Invoke();
+                            }
+                            OnSelectRobotMenuShown?.Invoke();
+                            break;
                         case EGameMenuState.GameMenu:
                             if (onGameMenuShown != null)
                             {
@@ -116,11 +136,15 @@ namespace Igumania.Controllers
 
         public event ShopMenuShownDelegate OnShopMenuShown;
 
+        public event SelectRobotMenuShownDelegate OnSelectRobotMenuShown;
+
         public event GameMenuShownDelegate OnGameMenuShown;
 
         public event PlayStoppedDelegate OnPlayStopped;
 
         public event ShopMenuHiddenDelegate OnShopMenuHidden;
+
+        public event SelectRobotMenuHiddenDelegate OnSelectRobotMenuHidden;
 
         public event GameMenuHiddenDelegate OnGameMenuHidden;
 
@@ -128,7 +152,9 @@ namespace Igumania.Controllers
 
         public void ShowShopMenu() => GameMenuState = EGameMenuState.ShopMenu;
 
-        public void ShowGameMenu() => GameMenuState = EGameMenuState.ShopMenu;
+        public void ShowSelectRobotMenu() => GameMenuState = EGameMenuState.SelectRobotMenu;
+
+        public void ShowGameMenu() => GameMenuState = EGameMenuState.GameMenu;
 
         public void ToggleGameMenu() => GameMenuState = (gameMenuState == EGameMenuState.GameMenu) ? EGameMenuState.Playing : EGameMenuState.GameMenu;
 

@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+// TODO: Fix poor API design without breaking references
 
 public class ConveyorProductsControllerScript : MonoBehaviour
 {

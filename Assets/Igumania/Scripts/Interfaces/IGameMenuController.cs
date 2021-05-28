@@ -16,17 +16,23 @@ namespace Igumania
 
         event ShopMenuShownDelegate OnShopMenuShown;
 
+        event SelectRobotMenuShownDelegate OnSelectRobotMenuShown;
+
         event GameMenuShownDelegate OnGameMenuShown;
 
         event PlayStoppedDelegate OnPlayStopped;
 
         event ShopMenuHiddenDelegate OnShopMenuHidden;
 
+        event SelectRobotMenuHiddenDelegate OnSelectRobotMenuHidden;
+
         event GameMenuHiddenDelegate OnGameMenuHidden;
 
         void ResumeGame();
 
         void ShowShopMenu();
+
+        void ShowSelectRobotMenu();
 
         void ShowGameMenu();
 
