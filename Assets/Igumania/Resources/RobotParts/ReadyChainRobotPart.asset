@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e761e3e03fec1024183e45292ab89dbb, type: 3}
+  m_Name: ReadyChainRobotPart
+  m_EditorClassIdentifier: 
+  itemNameStringTranslation: {fileID: 11400000, guid: a51549769fc04d345a6d31a8e0dfb9eb, type: 2}
+  itemDescriptionStringTranslation: {fileID: 11400000, guid: ac177821cce3c5149b2d3a4db55600c6, type: 2}
+  iconSpriteTranslation: {fileID: 11400000, guid: 4a4ade6bbf272864e9265ec3269b3e22, type: 2}
+  url: https://www.igus.com/info/harnessed-cables-readychain
+  cost: 0
+  profitAddition: 0
+  profitMultiplierAddition: 0
+  requiredUpgrades:
+  - {fileID: 11400000, guid: b2f27acea5c86f34d9581a6b75860284, type: 2}

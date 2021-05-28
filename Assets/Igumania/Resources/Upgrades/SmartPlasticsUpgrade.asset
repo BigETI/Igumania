@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7ba518c4200b246b0b1beaf3572d73, type: 3}
+  m_Name: SmartPlasticsUpgrade
+  m_EditorClassIdentifier: 
+  itemNameStringTranslation: {fileID: 11400000, guid: c004d8e121ebba54ca41effb850d0bd0, type: 2}
+  itemDescriptionStringTranslation: {fileID: 11400000, guid: 6ca5669d2d74444439374fe40cc190f1, type: 2}
+  iconSpriteTranslation: {fileID: 11400000, guid: 251f839c429db4444806c12a6520c81d, type: 2}
+  url: https://www.igus.com/info/news-2018-smart-plastics
+  cost: 0
+  profitAddition: 0
+  profitMultiplierAddition: 0
+  requiredUpgrades: []

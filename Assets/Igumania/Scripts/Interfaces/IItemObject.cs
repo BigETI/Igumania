@@ -10,6 +10,8 @@ namespace Igumania
 
         Sprite IconSprite { get; }
 
+        string URL { get; }
+
         ulong Cost { get; }
 
         long ProfitAddition { get; }

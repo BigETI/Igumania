@@ -8,6 +8,8 @@
 
         ShopMenu,
 
+        SelectRobotMenu,
+
         GameMenu
     }
 }

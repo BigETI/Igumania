@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &4164958673485910990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238989974845510055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.019749645, z: 0.01685366}
+  m_Center: {x: -9.672852e-19, y: -0.000021781325, z: 0.008227482}
 --- !u!95 &1757018952
 Animator:
   serializedVersion: 3
@@ -87,6 +100,19 @@ MonoBehaviour:
     - {fileID: 4133773940568520895}
     - {fileID: 8381654194092249079}
     - {fileID: 5808271032375476528}
+--- !u!114 &828313498588228214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238989974845510055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c2552d1986ccd469b3782876913b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotIndex: 0
 --- !u!1001 &2157416639113653494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 591641fcbd88ba445a6226177139e3b9, type: 3}
       propertyPath: m_Name
-      value: RobotPlatform Variant
+      value: PlatformRobotEntityObject
       objectReference: {fileID: 0}
     - target: {fileID: 1133731392541503652, guid: 591641fcbd88ba445a6226177139e3b9, type: 3}
       propertyPath: m_IsActive

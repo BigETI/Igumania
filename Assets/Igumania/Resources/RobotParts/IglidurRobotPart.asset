@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e761e3e03fec1024183e45292ab89dbb, type: 3}
+  m_Name: IglidurRobotPart
+  m_EditorClassIdentifier: 
+  itemNameStringTranslation: {fileID: 11400000, guid: 757294a410270d94092fb49f28e59e5c, type: 2}
+  itemDescriptionStringTranslation: {fileID: 11400000, guid: 0b015a790485c5d4aabdf1903a89a495, type: 2}
+  iconSpriteTranslation: {fileID: 11400000, guid: e1d97590f4ad1cd40b4ca4279b4d40ce, type: 2}
+  url: https://www.igus.com/info/plain-plastic-bearings
+  cost: 0
+  profitAddition: 0
+  profitMultiplierAddition: 0
+  requiredUpgrades: []

@@ -1,6 +1,6 @@
 ﻿namespace Igumania
 {
-    public interface IIntroMenuController
+    public interface IIntroMenuController : IBehaviour
     {
         bool IsNotShowingMainMenu { get; }
 

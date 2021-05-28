@@ -3,7 +3,10 @@ guid: bb7ba518c4200b246b0b1beaf3572d73
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - itemNameStringTranslation: {fileID: 11400000, guid: 6b29148477d0e70409db9e3d229d4b5b, type: 2}
+  - itemDescriptionStringTranslation: {fileID: 11400000, guid: 6b29148477d0e70409db9e3d229d4b5b, type: 2}
+  - iconSpriteTranslation: {fileID: 11400000, guid: 2e68b89572de1ae4c82d45ca69630a26, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

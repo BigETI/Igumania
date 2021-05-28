@@ -82,6 +82,32 @@ MonoBehaviour:
     - {fileID: 4216345438196330803}
     - {fileID: 8247653623351430945}
     - {fileID: 1481430156666632319}
+--- !u!114 &5602280491473479667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783185146243203464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c2552d1986ccd469b3782876913b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotIndex: 0
+--- !u!65 &9180784533280092643
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783185146243203464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5147375, y: 1, z: 1.6679912}
+  m_Center: {x: -0.25736472, y: -7.476263e-15, z: 0.8119312}
 --- !u!1001 &1476701981100309721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bdfe5f21b4b80174c8705a423fe68ee5, type: 3}
       propertyPath: m_Name
-      value: RobotArm Variant
+      value: ArmRobotEntityObject
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bdfe5f21b4b80174c8705a423fe68ee5, type: 3}
       propertyPath: m_IsActive
