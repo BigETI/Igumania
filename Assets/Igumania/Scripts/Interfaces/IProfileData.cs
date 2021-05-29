@@ -14,9 +14,9 @@ namespace Igumania
 
         IReadOnlyList<RobotData> Robots { get; }
 
-        IEnumerable<string> Upgrades { get; }
+        IReadOnlyList<string> Upgrades { get; }
 
-        void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades);
+        void SetUpgrades(IReadOnlyList<UpgradeObjectScript> upgrades);
 
         void SetRobots(IReadOnlyList<IRobot> robots);
     }

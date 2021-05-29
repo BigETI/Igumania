@@ -9,7 +9,7 @@ namespace Igumania
 {
     internal class Profile : IProfile
     {
-        private readonly Dictionary<string, UpgradeObjectScript> upgrades = new Dictionary<string, UpgradeObjectScript>();
+        private readonly List<UpgradeObjectScript> upgrades = new List<UpgradeObjectScript>();
 
         private IRobot[] robots = Array.Empty<IRobot>();
 
@@ -27,9 +27,13 @@ namespace Igumania
 
         public IReadOnlyList<IRobot> Robots => robots;
 
-        public IEnumerable<UpgradeObjectScript> Upgrades => upgrades.Values;
+        public IReadOnlyList<UpgradeObjectScript> Upgrades => upgrades;
 
-        public Profile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<IRobot> robots, IEnumerable<UpgradeObjectScript> upgrades)
+        public event UpgradeInstalledDelegate OnUpgradeInstalled;
+
+        public event UpgradeUninstalledDelegate OnUpgradeUninstalled;
+
+        public Profile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<IRobot> robots, IReadOnlyList<UpgradeObjectScript> upgrades)
         {
             if (upgrades == null)
             {
@@ -55,7 +59,14 @@ namespace Igumania
             {
                 if (upgrade)
                 {
-                    this.upgrades.Add(upgrade.name, upgrade);
+                    if (this.upgrades.Contains(upgrade))
+                    {
+                        Debug.LogWarning($"Found duplicate upgrade entry \"{ upgrade.name }\".");
+                    }
+                    else
+                    {
+                        this.upgrades.Add(upgrade);
+                    }
                 }
                 else
                 {
@@ -88,7 +99,7 @@ namespace Igumania
 
         public IRobot GetRobot(byte robotIndex) => (robotIndex < robots.Length) ? robots[robotIndex] : null;
 
-        public void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IEnumerable<RobotPartObjectScript> robotParts)
+        public void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IReadOnlyList<RobotPartObjectScript> robotParts)
         {
             if (elapsedTimeSinceLastLubrication < 0.0f)
             {
@@ -120,13 +131,49 @@ namespace Igumania
             }
         }
 
+        public bool IsInstallingUpgradeAllowed(UpgradeObjectScript upgrade)
+        {
+            if (!upgrade)
+            {
+                throw new ArgumentNullException(nameof(upgrade));
+            }
+            bool ret = false;
+            if (upgrade is RobotPartObjectScript robot_part)
+            {
+                foreach (IRobot robot in robots)
+                {
+                    if (robot != null)
+                    {
+                        if (robot.IsInstallingRobotPartAllowed(robot_part))
+                        {
+                            ret = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (!upgrades.Contains(upgrade))
+            {
+                ret = true;
+                foreach (UpgradeObjectScript required_upgrade in upgrade.RequiredUpgrades)
+                {
+                    if (!upgrades.Contains(required_upgrade))
+                    {
+                        ret = false;
+                        break;
+                    }
+                }
+            }
+            return ret;
+        }
+
         public bool IsUpgradeInstalled(UpgradeObjectScript upgrade)
         {
             if (!upgrade)
             {
                 throw new ArgumentNullException(nameof(upgrade));
             }
-            return upgrades.ContainsKey(upgrade.name);
+            return upgrades.Contains(upgrade);
         }
 
         public bool InstallUpgrade(UpgradeObjectScript upgrade)
@@ -135,27 +182,35 @@ namespace Igumania
             {
                 throw new ArgumentNullException(nameof(upgrade));
             }
-            string key = upgrade.name;
-            bool ret = !upgrades.ContainsKey(key);
+            bool ret = !(upgrade is RobotPartObjectScript) && IsInstallingUpgradeAllowed(upgrade);
             if (ret)
             {
-                upgrades.Add(key, upgrade);
+                upgrades.Add(upgrade);
+                OnUpgradeInstalled?.Invoke(upgrade);
             }
             return ret;
         }
 
-        public void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades)
+        public void SetUpgrades(IReadOnlyList<UpgradeObjectScript> upgrades)
         {
             if (upgrades == null)
             {
                 throw new ArgumentNullException(nameof(upgrades));
             }
-            this.upgrades.Clear();
+            UninstallAllUpgrades();
             foreach (UpgradeObjectScript upgrade in upgrades)
             {
                 if (upgrade)
                 {
-                    this.upgrades.Add(upgrade.name, upgrade);
+                    if (this.upgrades.Contains(upgrade))
+                    {
+                        Debug.LogWarning($"Found duplicate upgrade entry \"{ upgrade.name }\".");
+                    }
+                    else
+                    {
+                        this.upgrades.Add(upgrade);
+                        OnUpgradeInstalled?.Invoke(upgrade);
+                    }
                 }
                 else
                 {
@@ -170,10 +225,25 @@ namespace Igumania
             {
                 throw new ArgumentNullException(nameof(upgrade));
             }
-            return upgrades.Remove(upgrade.name);
+            bool ret = upgrades.Remove(upgrade);
+            if (ret && (OnUpgradeUninstalled != null))
+            {
+                OnUpgradeUninstalled.Invoke(upgrade);
+            }
+            return ret;
         }
 
-        public void UninstallAllUpgrades() => upgrades.Clear();
+        public void UninstallAllUpgrades()
+        {
+            if (OnUpgradeUninstalled != null)
+            {
+                foreach (UpgradeObjectScript upgrade in upgrades)
+                {
+                    OnUpgradeUninstalled.Invoke(upgrade);
+                }
+            }
+            upgrades.Clear();
+        }
 
         public bool Save()
         {
@@ -186,6 +256,7 @@ namespace Igumania
                 if (save_game != null)
                 {
                     RobotData[] robots = new RobotData[this.robots.Length];
+                    string[] upgrade_names = new string[upgrades.Count];
                     for (int robot_index = 0; robot_index < robots.Length; robot_index++)
                     {
                         IRobot robot = this.robots[robot_index];
@@ -200,7 +271,11 @@ namespace Igumania
                             robot_parts.Clear();
                         }
                     }
-                    save_game.Data.WriteProfile(ProfileIndex, Name, ProductionLevel, Money, robots, upgrades.Keys);
+                    for (int upgrade_name_index = 0; upgrade_name_index < upgrade_names.Length; upgrade_name_index++)
+                    {
+                        upgrade_names[upgrade_name_index] = upgrades[upgrade_name_index].name;
+                    }
+                    save_game.Data.WriteProfile(ProfileIndex, Name, ProductionLevel, Money, robots, upgrade_names);
                     ret = save_game.Save();
                 }
 #if UNITY_EDITOR

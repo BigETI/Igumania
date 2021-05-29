@@ -178,7 +178,11 @@ namespace Igumania.Controllers
             );
         }
 
-        public void ShowMainMenu() => SceneLoaderManager.LoadScenes("MainMenuScene");
+        public void ShowMainMenu()
+        {
+            GameManager.UnloadSelectedProfile();
+            SceneLoaderManager.LoadScenes("MainMenuScene");
+        }
 
         public void SaveGame() => GameManager.SelectedProfile?.Save();
 

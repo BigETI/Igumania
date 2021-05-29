@@ -43,14 +43,14 @@ namespace Igumania.Data
 
         public IReadOnlyList<RobotData> Robots => robots ?? Array.Empty<RobotData>();
 
-        public IEnumerable<string> Upgrades => upgrades ??= new List<string>();
+        public IReadOnlyList<string> Upgrades => upgrades ??= new List<string>();
 
         public ProfileData()
         {
             // ...
         }
 
-        public ProfileData(string name, byte productionLevel, long money, IReadOnlyList<RobotData> robots, IEnumerable<string> upgrades)
+        public ProfileData(string name, byte productionLevel, long money, IReadOnlyList<RobotData> robots, IReadOnlyList<string> upgrades)
         {
             if (robots == null)
             {
@@ -67,12 +67,12 @@ namespace Igumania.Data
             for (int robot_index = 0; robot_index < robots.Count; robot_index++)
             {
                 RobotData robot = robots[robot_index];
-                this.robots[robot_index] = (robot == null) ? null : new RobotData(robot.ElapsedTimeSinceLastLubrication, robot.ElapsedTimeSinceLastRepair, robot.Parts);
+                this.robots[robot_index] = (robot == null) ? null : new RobotData(robot.ElapsedTimeSinceLastLubrication, robot.ElapsedTimeSinceLastRepair, robot.RobotParts);
             }
             this.upgrades = new List<string>(upgrades);
         }
 
-        public void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades)
+        public void SetUpgrades(IReadOnlyList<UpgradeObjectScript> upgrades)
         {
             if (upgrades == null)
             {
@@ -119,10 +119,18 @@ namespace Igumania.Data
                 }
                 else
                 {
-                    HashSet<string> robot_parts = new HashSet<string>();
+                    List<string> robot_parts = new List<string>();
                     foreach (RobotPartObjectScript robot_part in robot.RobotParts)
                     {
-                        robot_parts.Add(robot_part.name);
+                        string robot_part_name = robot_part.name;
+                        if (robot_parts.Contains(robot_part_name))
+                        {
+                            Debug.LogWarning($"Found duplicate robot part entry \"{ robot_part_name }\".");
+                        }
+                        else
+                        {
+                            robot_parts.Add(robot_part.name);
+                        }
                     }
                     this.robots[robot_index] = new RobotData(robot.ElapsedTimeSinceLastLubrication, robot.ElapsedTimeSinceLastRepair, robot_parts);
                     robot_parts.Clear();

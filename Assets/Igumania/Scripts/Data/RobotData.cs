@@ -29,9 +29,9 @@ namespace Igumania.Data
             set => elapsedTimeSinceLastRepair = Mathf.Max(value, 0.0f);
         }
 
-        public IEnumerable<string> Parts => robotParts ??= new List<string>();
+        public IReadOnlyList<string> RobotParts => robotParts ??= new List<string>();
 
-        public RobotData(float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IEnumerable<string> robotParts)
+        public RobotData(float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IReadOnlyList<string> robotParts)
         {
             if (robotParts == null)
             {
@@ -52,7 +52,7 @@ namespace Igumania.Data
             this.elapsedTimeSinceLastRepair = elapsedTimeSinceLastRepair;
         }
 
-        public void SetParts(IEnumerable<RobotPartObjectScript> robotParts)
+        public void SetParts(IReadOnlyList<RobotPartObjectScript> robotParts)
         {
             if (this.robotParts == null)
             {
@@ -87,6 +87,6 @@ namespace Igumania.Data
             }
         }
 
-        public RobotData Clone() => new RobotData(elapsedTimeSinceLastLubrication, elapsedTimeSinceLastRepair, (IEnumerable<string>)robotParts ?? Array.Empty<string>());
+        public RobotData Clone() => new RobotData(elapsedTimeSinceLastLubrication, elapsedTimeSinceLastRepair, (IReadOnlyList<string>)robotParts ?? Array.Empty<string>());
     }
 }

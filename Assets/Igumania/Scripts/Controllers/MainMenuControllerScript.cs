@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnitySceneLoaderManager;
 using UnityTranslator.Objects;
 
 namespace Igumania.Controllers
@@ -187,7 +186,11 @@ namespace Igumania.Controllers
 #endif
         }
 
-        private void Start() => MainMenuState = EMainMenuState.MainMenu;
+        private void Start()
+        {
+            GameManager.UnloadSelectedProfile();
+            MainMenuState = EMainMenuState.MainMenu;
+        }
 
         private void Update()
         {

@@ -78,7 +78,7 @@ namespace Igumania.Data
 
         public IProfileData LoadProfile(byte profileIndex) => ((profiles != null) && (profileIndex < profiles.Length)) ? profiles[profileIndex] : null;
 
-        public void WriteProfile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<RobotData> robots, IEnumerable<string> upgrades)
+        public void WriteProfile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<RobotData> robots, IReadOnlyList<string> upgrades)
         {
             if (name == null)
             {

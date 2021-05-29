@@ -19,7 +19,11 @@ namespace Igumania
 
         IReadOnlyList<IRobot> Robots { get; }
 
-        IEnumerable<UpgradeObjectScript> Upgrades { get; }
+        IReadOnlyList<UpgradeObjectScript> Upgrades { get; }
+
+        event UpgradeInstalledDelegate OnUpgradeInstalled;
+
+        event UpgradeUninstalledDelegate OnUpgradeUninstalled;
 
         bool IsRobotAvailable(byte robotIndex);
 
@@ -27,13 +31,15 @@ namespace Igumania
 
         IRobot GetRobot(byte robotIndex);
 
-        void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IEnumerable<RobotPartObjectScript> robotParts);
+        void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IReadOnlyList<RobotPartObjectScript> robotParts);
+
+        bool IsInstallingUpgradeAllowed(UpgradeObjectScript upgrade);
 
         bool IsUpgradeInstalled(UpgradeObjectScript upgrade);
 
         bool InstallUpgrade(UpgradeObjectScript upgrade);
 
-        void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades);
+        void SetUpgrades(IReadOnlyList<UpgradeObjectScript> upgrades);
 
         bool UninstallUpgrade(UpgradeObjectScript upgrade);
 

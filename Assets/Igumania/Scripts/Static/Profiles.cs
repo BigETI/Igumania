@@ -39,7 +39,7 @@ namespace Igumania
                     {
                         RobotData robot = profile_data.Robots[robot_index];
                         List<RobotPartObjectScript> robot_parts = new List<RobotPartObjectScript>();
-                        foreach (string robot_part_name in robot.Parts)
+                        foreach (string robot_part_name in robot.RobotParts)
                         {
                             string robot_part_resource_path = $"RobotParts/{ robot_part_name }";
                             RobotPartObjectScript robot_part = Resources.Load<RobotPartObjectScript>(robot_part_resource_path);
@@ -85,7 +85,56 @@ namespace Igumania
                 IProfileData profile_data = save_game.Data.LoadProfile(profileIndex);
                 if (profile_data != null)
                 {
-                    ret = new Profile(profileIndex, profile_data.Name, profile_data.ProductionLevel, profile_data.Money, Array.Empty<IRobot>(), Array.Empty<UpgradeObjectScript>());
+                    List<IRobot> robots = new List<IRobot>();
+                    List<UpgradeObjectScript> upgrades = new List<UpgradeObjectScript>();
+                    foreach (RobotData robot in profile_data.Robots)
+                    {
+                        if (robot != null)
+                        {
+                            List<RobotPartObjectScript> robot_parts = new List<RobotPartObjectScript>();
+                            foreach (string robot_part_name in robot.RobotParts)
+                            {
+                                if (string.IsNullOrWhiteSpace(robot_part_name))
+                                {
+                                    Debug.LogError("Robot contains invalid robot parts.");
+                                }
+                                else
+                                {
+                                    RobotPartObjectScript robot_part = Resources.Load<RobotPartObjectScript>($"RobotParts/{ robot_part_name }");
+                                    if (robot_part)
+                                    {
+                                        robot_parts.Add(robot_part);
+                                    }
+                                    else
+                                    {
+                                        Debug.LogError($"Robot contains unknown robot part \"{ robot_part_name }\".");
+                                    }
+                                }
+
+                            }
+                            robots.Add(new Robot(robot.ElapsedTimeSinceLastLubrication, robot.ElapsedTimeSinceLastRepair, robot_parts));
+                        }
+                    }
+                    foreach (string upgrade_name in profile_data.Upgrades)
+                    {
+                        if (string.IsNullOrWhiteSpace(upgrade_name))
+                        {
+                            Debug.LogError("Profile contains invalid upgrade.");
+                        }
+                        else
+                        {
+                            UpgradeObjectScript upgrade = Resources.Load<UpgradeObjectScript>($"Upgrades/{ upgrade_name }");
+                            if (upgrade)
+                            {
+                                upgrades.Add(upgrade);
+                            }
+                            else
+                            {
+                                Debug.LogError($"Profile contains invalid upgrade \"{ upgrade_name }\".");
+                            }
+                        }
+                    }
+                    ret = new Profile(profileIndex, profile_data.Name, profile_data.ProductionLevel, profile_data.Money, robots, upgrades);
                 }
             }
             return ret;
