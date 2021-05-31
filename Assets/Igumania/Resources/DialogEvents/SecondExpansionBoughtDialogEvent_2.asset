@@ -15,3 +15,4 @@ MonoBehaviour:
   isAnOneTimeEvent: 1
   character: {fileID: 11400000, guid: 28c4f0b99482cab44923522324fa5138, type: 2}
   messageStringTranslation: {fileID: 11400000, guid: 83f1924cf358b8b42b49a3a023bd2090, type: 2}
+  nextDialogEvent: {fileID: 11400000, guid: 51192de10cc34434bbf8da70119ff202, type: 2}

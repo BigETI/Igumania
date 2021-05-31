@@ -106,9 +106,13 @@ namespace Igumania.Controllers
                     switch (GameMenuController.GameMenuState)
                     {
                         case EGameMenuState.Playing:
-                            if (Profile != null)
+                            if ((Profile != null) && (Robot != null))
                             {
                                 Profile.Money += interactionMoney;
+                                foreach (RobotPartObjectScript robot_part in Robot.RobotParts)
+                                {
+                                    Profile.Money += robot_part.ProfitAddition;
+                                }
                             }
                             break;
                         case EGameMenuState.SelectRobotMenu:

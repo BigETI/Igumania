@@ -159,22 +159,25 @@ namespace Igumania.Controllers
 
         public void RequestExitingGame()
         {
-            IsNotShowingDialog = false;
-            Dialogs.Show
-            (
-                exitGameTitleStringTranslation ? exitGameTitleStringTranslation.ToString() : string.Empty,
-                exitGameMessageStringTranslation ? exitGameMessageStringTranslation.ToString() : string.Empty,
-                EDialogType.Information,
-                EDialogButtons.YesNo,
-                (response, _) =>
-                {
-                    if (response == EDialogResponse.Yes)
+            if (Application.platform != RuntimePlatform.WebGLPlayer)
+            {
+                IsNotShowingDialog = false;
+                Dialogs.Show
+                (
+                    exitGameTitleStringTranslation ? exitGameTitleStringTranslation.ToString() : string.Empty,
+                    exitGameMessageStringTranslation ? exitGameMessageStringTranslation.ToString() : string.Empty,
+                    EDialogType.Information,
+                    EDialogButtons.YesNo,
+                    (response, _) =>
                     {
-                        ExitGame();
+                        if (response == EDialogResponse.Yes)
+                        {
+                            ExitGame();
+                        }
+                        IsNotShowingDialog = true;
                     }
-                    IsNotShowingDialog = true;
-                }
-            );
+                );
+            }
         }
 
         public void ExitGame()

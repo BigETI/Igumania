@@ -16,8 +16,8 @@ MonoBehaviour:
   itemDescriptionStringTranslation: {fileID: 11400000, guid: 96b54a1d1ac199a47ab11a1b0d861525, type: 2}
   iconSpriteTranslation: {fileID: 11400000, guid: 2dcf3bc54fe88304f95f7cd20192876e, type: 2}
   url: https://www.igus.com/info/robot-control-system
-  cost: 0
-  profitAddition: 0
-  profitMultiplierAddition: 0
+  cost: 1000
+  profitAddition: 400
+  profitMultiplierAddition: 2
   requiredUpgrades:
   - {fileID: 11400000, guid: 693c001a6f1a11f43975efc0c67d4d37, type: 2}

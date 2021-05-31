@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescriptionStringTranslation: {fileID: 11400000, guid: 0b015a790485c5d4aabdf1903a89a495, type: 2}
   iconSpriteTranslation: {fileID: 11400000, guid: e1d97590f4ad1cd40b4ca4279b4d40ce, type: 2}
   url: https://www.igus.com/info/plain-plastic-bearings
-  cost: 0
-  profitAddition: 0
-  profitMultiplierAddition: 0
+  cost: 100
+  profitAddition: 100
+  profitMultiplierAddition: 0.5
   requiredUpgrades: []

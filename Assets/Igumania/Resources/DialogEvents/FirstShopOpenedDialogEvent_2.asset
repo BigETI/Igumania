@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: FirstShopOpenedDialogEvent_2
   m_EditorClassIdentifier: 
   isAnOneTimeEvent: 1
-  character: {fileID: 11400000, guid: ec0aed34a05ef824e926a1b8fa139a4e, type: 2}
+  character: {fileID: 11400000, guid: 28c4f0b99482cab44923522324fa5138, type: 2}
   messageStringTranslation: {fileID: 11400000, guid: 2352af6846704f645856cc2b1660e644, type: 2}
+  nextDialogEvent: {fileID: 11400000, guid: 9ad5b7e560e410f44948c3ed1624fd1a, type: 2}

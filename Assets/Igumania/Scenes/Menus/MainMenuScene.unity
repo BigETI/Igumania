@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.20749187, g: 0.21147609, b: 0.1457696, a: 1}
+  m_IndirectSpecularColor: {r: 0.20749268, g: 0.21147677, b: 0.14576986, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1020,8 +1020,8 @@ RectTransform:
   m_Children:
   - {fileID: 1798129001}
   - {fileID: 1220398597}
-  - {fileID: 1441823668}
   - {fileID: 1342447361}
+  - {fileID: 1441823668}
   m_Father: {fileID: 890785485}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1699,17 +1699,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6751493478323108371, guid: 10e395855c26f174598ce63bc353a083, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
-      objectReference: {fileID: 0}
-    - target: {fileID: 7439862215909382176, guid: 10e395855c26f174598ce63bc353a083, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 26.610962
-      objectReference: {fileID: 0}
     - target: {fileID: 7439862215909382176, guid: 10e395855c26f174598ce63bc353a083, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00793457
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663969129139499810, guid: 10e395855c26f174598ce63bc353a083, type: 3}
       propertyPath: m_Name
@@ -3412,7 +3404,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 516540964}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3679,6 +3671,7 @@ GameObject:
   - component: {fileID: 1441823671}
   - component: {fileID: 1441823670}
   - component: {fileID: 1441823669}
+  - component: {fileID: 1441823672}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -3699,7 +3692,7 @@ RectTransform:
   m_Children:
   - {fileID: 36829148}
   m_Father: {fileID: 516540964}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -3801,6 +3794,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441823667}
   m_CullTransparentMesh: 1
+--- !u!114 &1441823672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441823667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0a9ff0ef1824a41b8114ed6d271c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUsingPlatformExlusions: 1
+  supportedPlatforms: 
+  exludedPlatforms: 11000000
 --- !u!1 &1572242250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4439,17 +4447,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6751493478323108371, guid: 10e395855c26f174598ce63bc353a083, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
-      objectReference: {fileID: 0}
-    - target: {fileID: 7439862215909382176, guid: 10e395855c26f174598ce63bc353a083, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 26.610962
-      objectReference: {fileID: 0}
     - target: {fileID: 7439862215909382176, guid: 10e395855c26f174598ce63bc353a083, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00793457
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663969129139499810, guid: 10e395855c26f174598ce63bc353a083, type: 3}
       propertyPath: m_Name
@@ -5428,8 +5428,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7439862215909382176, guid: 10e395855c26f174598ce63bc353a083, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 26.610962
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663969129139499810, guid: 10e395855c26f174598ce63bc353a083, type: 3}
       propertyPath: m_Name
