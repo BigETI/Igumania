@@ -18,6 +18,6 @@ MonoBehaviour:
   url: https://www.igus.com/info/harnessed-cables-readychain
   cost: 500
   profitAddition: 200
-  profitMultiplierAddition: 1
+  profitMultiplierAddition: 0.16875
   requiredUpgrades:
   - {fileID: 11400000, guid: b2f27acea5c86f34d9581a6b75860284, type: 2}

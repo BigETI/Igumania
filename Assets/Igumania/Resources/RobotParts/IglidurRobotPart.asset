@@ -18,5 +18,5 @@ MonoBehaviour:
   url: https://www.igus.com/info/plain-plastic-bearings
   cost: 100
   profitAddition: 100
-  profitMultiplierAddition: 0.5
+  profitMultiplierAddition: 0.16875
   requiredUpgrades: []

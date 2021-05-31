@@ -18,5 +18,5 @@ MonoBehaviour:
   url: https://www.igus.com/info/news-2018-smart-plastics
   cost: 500
   profitAddition: 100
-  profitMultiplierAddition: 5
+  profitMultiplierAddition: 0.16875
   requiredUpgrades: []

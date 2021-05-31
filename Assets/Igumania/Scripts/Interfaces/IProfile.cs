@@ -25,6 +25,10 @@ namespace Igumania
 
         event UpgradeUninstalledDelegate OnUpgradeUninstalled;
 
+        event RobotEnabledDelegate OnRobotEnabled;
+
+        event RobotDisabledDelegate OnRobotDisabled;
+
         bool IsInstallingUpgradeAllowed(UpgradeObjectScript upgrade);
 
         bool IsUpgradeInstalled(UpgradeObjectScript upgrade);

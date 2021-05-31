@@ -127,6 +127,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startObject: {fileID: 201972093}
   endObject: {fileID: 2101267103}
+--- !u!114 &8697840791320467180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280109580296217675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd77fce1e702d9438214eb770aa209a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onProductionSpeedUpdated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2122835953}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: set_speed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2397080042246939443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,7 +273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 792f755d9fdf30344b26a783291c8cb3, type: 3}
       propertyPath: m_Name
-      value: Conveyor_Short Variant
+      value: ShortConveyorEntityObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792f755d9fdf30344b26a783291c8cb3, type: 3}
