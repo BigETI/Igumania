@@ -8,7 +8,7 @@ namespace Igumania
         byte ProfileIndex { get; }
 
 #if UNITY_EDITOR
-        public bool IsFake { get; }
+        bool IsFake { get; }
 #endif
 
         string Name { get; }
@@ -25,14 +25,6 @@ namespace Igumania
 
         event UpgradeUninstalledDelegate OnUpgradeUninstalled;
 
-        bool IsRobotAvailable(byte robotIndex);
-
-        IRobot CreateNewRobot(byte robotIndex);
-
-        IRobot GetRobot(byte robotIndex);
-
-        void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IReadOnlyList<RobotPartObjectScript> robotParts);
-
         bool IsInstallingUpgradeAllowed(UpgradeObjectScript upgrade);
 
         bool IsUpgradeInstalled(UpgradeObjectScript upgrade);
@@ -44,6 +36,24 @@ namespace Igumania
         bool UninstallUpgrade(UpgradeObjectScript upgrade);
 
         void UninstallAllUpgrades();
+
+        bool IsRobotAvailable(byte robotIndex);
+
+        IRobot CreateNewRobot(byte robotIndex);
+
+        IRobot GetRobot(byte robotIndex);
+
+        void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IReadOnlyList<RobotPartObjectScript> robotParts);
+
+        bool IsDialogEventPassed(DialogEventObjectScript passedDialogEvent);
+
+        bool AddPassedDialogEvent(DialogEventObjectScript passedDialogEvent);
+
+        void SetPassedDialogEvents(IEnumerable<DialogEventObjectScript> passedDialogEvents);
+
+        bool RemovePassedDialogEvent(DialogEventObjectScript passedDialogEvent);
+
+        void ClearPassedDialogEvents();
 
         bool Save();
     }

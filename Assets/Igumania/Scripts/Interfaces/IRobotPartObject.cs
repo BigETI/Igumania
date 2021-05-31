@@ -1,6 +1,6 @@
 ﻿namespace Igumania
 {
-    public interface IRobotPartObject : IItemObject
+    public interface IRobotPartObject : IUpgradeObject
     {
         // ...
     }

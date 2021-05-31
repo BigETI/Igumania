@@ -11,6 +11,8 @@ namespace Igumania
     {
         private readonly List<UpgradeObjectScript> upgrades = new List<UpgradeObjectScript>();
 
+        private readonly Dictionary<string, DialogEventObjectScript> passedDialogEvents = new Dictionary<string, DialogEventObjectScript>();
+
         private IRobot[] robots = Array.Empty<IRobot>();
 
         public byte ProfileIndex { get; }
@@ -33,11 +35,15 @@ namespace Igumania
 
         public event UpgradeUninstalledDelegate OnUpgradeUninstalled;
 
-        public Profile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<IRobot> robots, IReadOnlyList<UpgradeObjectScript> upgrades)
+        public Profile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<IRobot> robots, IReadOnlyList<UpgradeObjectScript> upgrades, IEnumerable<DialogEventObjectScript> passedDialogEvents)
         {
             if (upgrades == null)
             {
                 throw new ArgumentNullException(nameof(upgrades));
+            }
+            if (passedDialogEvents == null)
+            {
+                throw new ArgumentNullException(nameof(passedDialogEvents));
             }
             ProfileIndex = profileIndex;
             Name = name ?? throw new ArgumentNullException(nameof(name));
@@ -73,63 +79,36 @@ namespace Igumania
                     Debug.LogError("Upgrades contain null.");
                 }
             }
+            foreach (DialogEventObjectScript passed_dialog_event in passedDialogEvents)
+            {
+                if (passed_dialog_event)
+                {
+                    string key = passed_dialog_event.name;
+                    if (this.passedDialogEvents.ContainsKey(key))
+                    {
+                        Debug.LogWarning($"Found duplicate passed dialog event entry \"{ key }\".");
+                    }
+                    else
+                    {
+                        this.passedDialogEvents.Add(key, passed_dialog_event);
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Passed dialog events contain null.");
+                }
+            }
         }
 
 #if UNITY_EDITOR
         public static IProfile CreateNewFakeProfile()
         {
-            return new Profile(0, "Fake", 0, 0L, Array.Empty<IRobot>(), Array.Empty<UpgradeObjectScript>())
+            return new Profile(0, "Fake", 0, 0L, Array.Empty<IRobot>(), Array.Empty<UpgradeObjectScript>(), Array.Empty<DialogEventObjectScript>())
             {
                 IsFake = true
             };
         }
 #endif
-
-        public bool IsRobotAvailable(byte robotIndex) => (robotIndex < robots.Length) && (robots[robotIndex] != null);
-
-        public IRobot CreateNewRobot(byte robotIndex)
-        {
-            robots ??= Array.Empty<IRobot>();
-            if (robotIndex >= robots.Length)
-            {
-                Array.Resize(ref robots, robotIndex + 1);
-            }
-            return robots[robotIndex] ??= new Robot(0.0f, 0.0f, Array.Empty<RobotPartObjectScript>());
-        }
-
-        public IRobot GetRobot(byte robotIndex) => (robotIndex < robots.Length) ? robots[robotIndex] : null;
-
-        public void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IReadOnlyList<RobotPartObjectScript> robotParts)
-        {
-            if (elapsedTimeSinceLastLubrication < 0.0f)
-            {
-                throw new ArgumentException("Elapsed time since last lubrication can't be negative.", nameof(elapsedTimeSinceLastLubrication));
-            }
-            if (elapsedTimeSinceLastRepair < 0.0f)
-            {
-                throw new ArgumentException("Elapsed time since last repair can't be negative.", nameof(elapsedTimeSinceLastRepair));
-            }
-            if (robotParts == null)
-            {
-                throw new ArgumentNullException(nameof(robotParts));
-            }
-            robots ??= Array.Empty<IRobot>();
-            if (robotIndex >= robots.Length)
-            {
-                Array.Resize(ref robots, robotIndex + 1);
-            }
-            ref IRobot robot = ref robots[robotIndex];
-            if (robot == null)
-            {
-                robot = new Robot(elapsedTimeSinceLastLubrication, elapsedTimeSinceLastRepair, robotParts);
-            }
-            else
-            {
-                robot.ElapsedTimeSinceLastLubrication = elapsedTimeSinceLastLubrication;
-                robot.ElapsedTimeSinceLastRepair = elapsedTimeSinceLastRepair;
-                robot.SetRobotParts(robotParts);
-            }
-        }
 
         public bool IsInstallingUpgradeAllowed(UpgradeObjectScript upgrade)
         {
@@ -245,6 +224,115 @@ namespace Igumania
             upgrades.Clear();
         }
 
+        public bool IsRobotAvailable(byte robotIndex) => (robotIndex < robots.Length) && (robots[robotIndex] != null);
+
+        public IRobot CreateNewRobot(byte robotIndex)
+        {
+            robots ??= Array.Empty<IRobot>();
+            if (robotIndex >= robots.Length)
+            {
+                Array.Resize(ref robots, robotIndex + 1);
+            }
+            return robots[robotIndex] ??= new Robot(0.0f, 0.0f, Array.Empty<RobotPartObjectScript>());
+        }
+
+        public IRobot GetRobot(byte robotIndex) => (robotIndex < robots.Length) ? robots[robotIndex] : null;
+
+        public void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IReadOnlyList<RobotPartObjectScript> robotParts)
+        {
+            if (elapsedTimeSinceLastLubrication < 0.0f)
+            {
+                throw new ArgumentException("Elapsed time since last lubrication can't be negative.", nameof(elapsedTimeSinceLastLubrication));
+            }
+            if (elapsedTimeSinceLastRepair < 0.0f)
+            {
+                throw new ArgumentException("Elapsed time since last repair can't be negative.", nameof(elapsedTimeSinceLastRepair));
+            }
+            if (robotParts == null)
+            {
+                throw new ArgumentNullException(nameof(robotParts));
+            }
+            robots ??= Array.Empty<IRobot>();
+            if (robotIndex >= robots.Length)
+            {
+                Array.Resize(ref robots, robotIndex + 1);
+            }
+            ref IRobot robot = ref robots[robotIndex];
+            if (robot == null)
+            {
+                robot = new Robot(elapsedTimeSinceLastLubrication, elapsedTimeSinceLastRepair, robotParts);
+            }
+            else
+            {
+                robot.ElapsedTimeSinceLastLubrication = elapsedTimeSinceLastLubrication;
+                robot.ElapsedTimeSinceLastRepair = elapsedTimeSinceLastRepair;
+                robot.SetRobotParts(robotParts);
+            }
+        }
+
+        public bool IsDialogEventPassed(DialogEventObjectScript passedDialogEvent)
+        {
+            if (!passedDialogEvent)
+            {
+                throw new ArgumentNullException(nameof(passedDialogEvent));
+            }
+            return passedDialogEvents.ContainsKey(passedDialogEvent.name);
+        }
+
+        public bool AddPassedDialogEvent(DialogEventObjectScript passedDialogEvent)
+        {
+            if (!passedDialogEvent)
+            {
+                throw new ArgumentNullException(nameof(passedDialogEvent));
+            }
+            string key = passedDialogEvent.name;
+            bool ret = !passedDialogEvents.ContainsKey(key);
+            if (ret)
+            {
+                passedDialogEvents.Add(key, passedDialogEvent);
+            }
+            return ret;
+        }
+
+        public void SetPassedDialogEvents(IEnumerable<DialogEventObjectScript> passedDialogEvents)
+        {
+            if (passedDialogEvents == null)
+            {
+                throw new ArgumentNullException(nameof(passedDialogEvents));
+            }
+            this.passedDialogEvents.Clear();
+            foreach (DialogEventObjectScript passed_dialog_event in passedDialogEvents)
+            {
+                if (passed_dialog_event)
+                {
+                    string key = passed_dialog_event.name;
+                    if (this.passedDialogEvents.ContainsKey(key))
+                    {
+                        Debug.LogWarning($"Found duplicate passed dialog event entry \"{ key }\".");
+                    }
+                    else
+                    {
+                        this.passedDialogEvents.Add(key, passed_dialog_event);
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Passed dialog events contain null.");
+                }
+            }
+        }
+
+        public bool RemovePassedDialogEvent(DialogEventObjectScript passedDialogEvent)
+        {
+            if (!passedDialogEvent)
+            {
+                throw new ArgumentNullException(nameof(passedDialogEvent));
+            }
+            return passedDialogEvents.Remove(passedDialogEvent.name);
+        }
+
+        public void ClearPassedDialogEvents() => passedDialogEvents.Clear();
+
         public bool Save()
         {
             bool ret = false;
@@ -257,6 +345,10 @@ namespace Igumania
                 {
                     RobotData[] robots = new RobotData[this.robots.Length];
                     string[] upgrade_names = new string[upgrades.Count];
+                    for (int upgrade_name_index = 0; upgrade_name_index < upgrade_names.Length; upgrade_name_index++)
+                    {
+                        upgrade_names[upgrade_name_index] = upgrades[upgrade_name_index].name;
+                    }
                     for (int robot_index = 0; robot_index < robots.Length; robot_index++)
                     {
                         IRobot robot = this.robots[robot_index];
@@ -271,11 +363,7 @@ namespace Igumania
                             robot_parts.Clear();
                         }
                     }
-                    for (int upgrade_name_index = 0; upgrade_name_index < upgrade_names.Length; upgrade_name_index++)
-                    {
-                        upgrade_names[upgrade_name_index] = upgrades[upgrade_name_index].name;
-                    }
-                    save_game.Data.WriteProfile(ProfileIndex, Name, ProductionLevel, Money, robots, upgrade_names);
+                    save_game.Data.WriteProfile(ProfileIndex, Name, ProductionLevel, Money, upgrade_names, robots, passedDialogEvents.Keys);
                     ret = save_game.Save();
                 }
 #if UNITY_EDITOR

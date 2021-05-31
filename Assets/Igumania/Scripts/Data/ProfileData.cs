@@ -18,10 +18,13 @@ namespace Igumania.Data
         private long money;
 
         [SerializeField]
+        private List<string> upgrades;
+
+        [SerializeField]
         private RobotData[] robots;
 
         [SerializeField]
-        private List<string> upgrades;
+        private List<string> passedDialogEvents;
 
         public string Name
         {
@@ -41,35 +44,42 @@ namespace Igumania.Data
             set => money = value;
         }
 
+        public IReadOnlyList<string> Upgrades => upgrades ??= new List<string>();
+
         public IReadOnlyList<RobotData> Robots => robots ?? Array.Empty<RobotData>();
 
-        public IReadOnlyList<string> Upgrades => upgrades ??= new List<string>();
+        public IEnumerable<string> PassedDialogEvents => passedDialogEvents ??= new List<string>();
 
         public ProfileData()
         {
             // ...
         }
 
-        public ProfileData(string name, byte productionLevel, long money, IReadOnlyList<RobotData> robots, IReadOnlyList<string> upgrades)
+        public ProfileData(string name, byte productionLevel, long money, IReadOnlyList<string> upgrades, IReadOnlyList<RobotData> robots, IEnumerable<string> passedDialogEvents)
         {
-            if (robots == null)
-            {
-                throw new ArgumentNullException(nameof(robots));
-            }
             if (upgrades == null)
             {
                 throw new ArgumentNullException(nameof(upgrades));
             }
+            if (robots == null)
+            {
+                throw new ArgumentNullException(nameof(robots));
+            }
+            if (passedDialogEvents == null)
+            {
+                throw new ArgumentNullException(nameof(passedDialogEvents));
+            }
             this.name = name ?? throw new ArgumentNullException(nameof(name));
             this.productionLevel = productionLevel;
             this.money = money;
+            this.upgrades = new List<string>(upgrades);
             this.robots = new RobotData[robots.Count];
             for (int robot_index = 0; robot_index < robots.Count; robot_index++)
             {
                 RobotData robot = robots[robot_index];
                 this.robots[robot_index] = (robot == null) ? null : new RobotData(robot.ElapsedTimeSinceLastLubrication, robot.ElapsedTimeSinceLastRepair, robot.RobotParts);
             }
-            this.upgrades = new List<string>(upgrades);
+            this.passedDialogEvents = new List<string>(passedDialogEvents);
         }
 
         public void SetUpgrades(IReadOnlyList<UpgradeObjectScript> upgrades)
@@ -149,7 +159,7 @@ namespace Igumania.Data
                     this.robots[robot_index] = robot?.Clone();
                 }
             }
-            return new ProfileData(Name, productionLevel, money, robots, upgrades);
+            return new ProfileData(Name, productionLevel, money, upgrades ??= new List<string>(), robots, passedDialogEvents ??= new List<string>());
         }
     }
 }

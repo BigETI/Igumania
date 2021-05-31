@@ -15,10 +15,15 @@ namespace Igumania.Objects
         [SerializeField]
         private StringTranslationObjectScript messageStringTranslation = default;
 
+        [SerializeField]
+        private DialogEventObjectScript nextDialogEvent = default;
+
         public bool IsAnOneTimeEvent => isAnOneTimeEvent;
 
         public CharacterObjectScript Character => character;
 
         public string Message => messageStringTranslation ? messageStringTranslation.ToString() : string.Empty;
+
+        public DialogEventObjectScript NextDialogEvent => nextDialogEvent;
     }
 }

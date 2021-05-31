@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Igumania.Controllers
 {
-    public class EnvironmentVisualUpgradesControllerScript : MonoBehaviour
+    public class EnvironmentVisualUpgradesControllerScript : MonoBehaviour, IEnvironmentVisualUpgradesController
     {
         [SerializeField]
         private VisualUpgradeData[] visualUpgrades = Array.Empty<VisualUpgradeData>();
@@ -14,7 +14,7 @@ namespace Igumania.Controllers
         private Dictionary<string, IVisualUpgradeData> visualUpgradeLookup = new Dictionary<string, IVisualUpgradeData>();
 
         private bool isNotInitialized = true;
-        
+
         public IEnumerable<IVisualUpgradeData> VisualUpgrades => visualUpgradeLookup.Values;
 
         public IProfile Profile { get; private set; }

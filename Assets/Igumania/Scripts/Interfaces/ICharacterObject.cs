@@ -7,7 +7,5 @@ namespace Igumania
         string CharacterName { get; }
 
         Sprite AvatarSprite { get; }
-
-        ECharacterAlignment CharacterAlignment { get; }
     }
 }

@@ -87,6 +87,6 @@ namespace Igumania.Data
             }
         }
 
-        public RobotData Clone() => new RobotData(elapsedTimeSinceLastLubrication, elapsedTimeSinceLastRepair, (IReadOnlyList<string>)robotParts ?? Array.Empty<string>());
+        public RobotData Clone() => new RobotData(elapsedTimeSinceLastLubrication, elapsedTimeSinceLastRepair, robotParts ??= new List<string>());
     }
 }

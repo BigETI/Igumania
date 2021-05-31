@@ -12,13 +12,8 @@ namespace Igumania.Objects
         [SerializeField]
         private SpriteTranslationObjectScript avatarSpriteTranslation = default;
 
-        [SerializeField]
-        private ECharacterAlignment characterAlignment;
-
         public string CharacterName => characterNameStringTranslation ? characterNameStringTranslation.ToString() : string.Empty;
 
         public Sprite AvatarSprite => avatarSpriteTranslation ? avatarSpriteTranslation.Sprite : null;
-
-        public ECharacterAlignment CharacterAlignment => characterAlignment;
     }
 }
