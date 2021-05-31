@@ -9,13 +9,19 @@ namespace Igumania
 
         float ElapsedTimeSinceLastRepair { get; set; }
 
-        IEnumerable<RobotPartObjectScript> RobotParts { get; }
+        IReadOnlyList<RobotPartObjectScript> RobotParts { get; }
+
+        event RobotPartInstalledDelegate OnRobotPartInstalled;
+
+        event RobotPartUninstalledDelegate OnRobotPartUninstalled;
+
+        bool IsInstallingRobotPartAllowed(RobotPartObjectScript robotPart);
 
         bool IsRobotPartInstalled(RobotPartObjectScript robotPart);
 
         bool InstallRobotPart(RobotPartObjectScript robotPart);
 
-        void SetRobotParts(IEnumerable<RobotPartObjectScript> robotParts);
+        void SetRobotParts(IReadOnlyList<RobotPartObjectScript> robotParts);
 
         bool UninstallRobotPart(RobotPartObjectScript robotPart);
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescriptionStringTranslation: {fileID: 11400000, guid: 6ca5669d2d74444439374fe40cc190f1, type: 2}
   iconSpriteTranslation: {fileID: 11400000, guid: 251f839c429db4444806c12a6520c81d, type: 2}
   url: https://www.igus.com/info/news-2018-smart-plastics
-  cost: 0
-  profitAddition: 0
-  profitMultiplierAddition: 0
+  cost: 500
+  profitAddition: 100
+  profitMultiplierAddition: 5
   requiredUpgrades: []

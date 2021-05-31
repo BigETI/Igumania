@@ -8,7 +8,7 @@ namespace Igumania
         byte ProfileIndex { get; }
 
 #if UNITY_EDITOR
-        public bool IsFake { get; }
+        bool IsFake { get; }
 #endif
 
         string Name { get; }
@@ -19,7 +19,23 @@ namespace Igumania
 
         IReadOnlyList<IRobot> Robots { get; }
 
-        IEnumerable<UpgradeObjectScript> Upgrades { get; }
+        IReadOnlyList<UpgradeObjectScript> Upgrades { get; }
+
+        event UpgradeInstalledDelegate OnUpgradeInstalled;
+
+        event UpgradeUninstalledDelegate OnUpgradeUninstalled;
+
+        bool IsInstallingUpgradeAllowed(UpgradeObjectScript upgrade);
+
+        bool IsUpgradeInstalled(UpgradeObjectScript upgrade);
+
+        bool InstallUpgrade(UpgradeObjectScript upgrade);
+
+        void SetUpgrades(IReadOnlyList<UpgradeObjectScript> upgrades);
+
+        bool UninstallUpgrade(UpgradeObjectScript upgrade);
+
+        void UninstallAllUpgrades();
 
         bool IsRobotAvailable(byte robotIndex);
 
@@ -27,17 +43,17 @@ namespace Igumania
 
         IRobot GetRobot(byte robotIndex);
 
-        void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IEnumerable<RobotPartObjectScript> robotParts);
+        void SetRobot(byte robotIndex, float elapsedTimeSinceLastLubrication, float elapsedTimeSinceLastRepair, IReadOnlyList<RobotPartObjectScript> robotParts);
 
-        bool IsUpgradeInstalled(UpgradeObjectScript upgrade);
+        bool IsDialogEventPassed(DialogEventObjectScript passedDialogEvent);
 
-        bool InstallUpgrade(UpgradeObjectScript upgrade);
+        bool AddPassedDialogEvent(DialogEventObjectScript passedDialogEvent);
 
-        void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades);
+        void SetPassedDialogEvents(IEnumerable<DialogEventObjectScript> passedDialogEvents);
 
-        bool UninstallUpgrade(UpgradeObjectScript upgrade);
+        bool RemovePassedDialogEvent(DialogEventObjectScript passedDialogEvent);
 
-        void UninstallAllUpgrades();
+        void ClearPassedDialogEvents();
 
         bool Save();
     }

@@ -1,4 +1,5 @@
 ﻿using Igumania.Controllers;
+using System.Collections.Generic;
 
 namespace Igumania
 {
@@ -10,9 +11,9 @@ namespace Igumania
 
         long InteractionMoney { get; set; }
 
-        float RemainingInteractionPauseTime { get; }
+        IEnumerable<IVisualUpgradeData> VisualUpgrades { get; }
 
-        RobotsVisualsControllerScript RobotsVisualsController { get; }
+        float RemainingInteractionPauseTime { get; }
 
         RobotContextMenuUIControllerScript RobotContextMenuUIController { get; }
 

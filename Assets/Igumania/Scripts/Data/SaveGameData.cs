@@ -6,7 +6,7 @@ using UnitySaveGame;
 namespace Igumania.Data
 {
     [Serializable]
-    public class SaveGameData : ASaveGameData
+    public class SaveGameData : ASaveGameData, ISaveGameData
     {
         [SerializeField]
         private ProfileData[] profiles;
@@ -78,26 +78,26 @@ namespace Igumania.Data
 
         public IProfileData LoadProfile(byte profileIndex) => ((profiles != null) && (profileIndex < profiles.Length)) ? profiles[profileIndex] : null;
 
-        public void WriteProfile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<RobotData> robots, IEnumerable<string> upgrades)
+        public void WriteProfile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<string> upgrades, IReadOnlyList<RobotData> robots, IEnumerable<string> passedDialogEvents)
         {
             if (name == null)
             {
                 throw new ArgumentNullException(nameof(name));
             }
-            if (robots == null)
-            {
-                throw new ArgumentNullException(nameof(robots));
-            }
             if (upgrades == null)
             {
                 throw new ArgumentNullException(nameof(upgrades));
+            }
+            if (robots == null)
+            {
+                throw new ArgumentNullException(nameof(robots));
             }
             profiles ??= Array.Empty<ProfileData>();
             if (profileIndex >= profiles.Length)
             {
                 Array.Resize(ref profiles, profileIndex + 1);
             }
-            profiles[profileIndex] = new ProfileData(name, productionLevel, money, robots, upgrades);
+            profiles[profileIndex] = new ProfileData(name, productionLevel, money, upgrades, robots, passedDialogEvents);
         }
 
         public bool RemoveProfile(byte profileIndex)

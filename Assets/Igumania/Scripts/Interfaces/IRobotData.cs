@@ -9,8 +9,8 @@ namespace Igumania
 
         float ElapsedTimeSinceLastRepair { get; set; }
 
-        IEnumerable<string> Parts { get; }
+        IReadOnlyList<string> RobotParts { get; }
 
-        void SetParts(IEnumerable<RobotPartObjectScript> robotParts);
+        void SetParts(IReadOnlyList<RobotPartObjectScript> robotParts);
     }
 }

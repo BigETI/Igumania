@@ -16,8 +16,8 @@ MonoBehaviour:
   itemDescriptionStringTranslation: {fileID: 11400000, guid: 456b0908f8c1fff44bb84a23336297a9, type: 2}
   iconSpriteTranslation: {fileID: 11400000, guid: 30e3ff5d662cccd4d915a98396144a06, type: 2}
   url: 
-  cost: 0
-  profitAddition: 0
-  profitMultiplierAddition: 0
+  cost: 100000
+  profitAddition: 10000
+  profitMultiplierAddition: 100
   requiredUpgrades:
   - {fileID: 11400000, guid: c6943a6baf2b31a4ab56201943919154, type: 2}

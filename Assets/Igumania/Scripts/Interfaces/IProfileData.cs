@@ -12,11 +12,13 @@ namespace Igumania
 
         long Money { get; set; }
 
+        IReadOnlyList<string> Upgrades { get; }
+
         IReadOnlyList<RobotData> Robots { get; }
 
-        IEnumerable<string> Upgrades { get; }
+        IEnumerable<string> PassedDialogEvents { get; }
 
-        void SetUpgrades(IEnumerable<UpgradeObjectScript> upgrades);
+        void SetUpgrades(IReadOnlyList<UpgradeObjectScript> upgrades);
 
         void SetRobots(IReadOnlyList<IRobot> robots);
     }

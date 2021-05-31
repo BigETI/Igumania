@@ -664,8 +664,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 178, y: -172}
-  m_SizeDelta: {x: 535, y: 55}
+  m_AnchoredPosition: {x: 456, y: -144}
+  m_SizeDelta: {x: 592, y: 77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289664287
 MonoBehaviour:
@@ -1020,6 +1020,7 @@ RectTransform:
   m_Children:
   - {fileID: 1798129001}
   - {fileID: 1220398597}
+  - {fileID: 1342447361}
   - {fileID: 1441823668}
   m_Father: {fileID: 890785485}
   m_RootOrder: 1
@@ -1696,6 +1697,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481617589776006228, guid: 10e395855c26f174598ce63bc353a083, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439862215909382176, guid: 10e395855c26f174598ce63bc353a083, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663969129139499810, guid: 10e395855c26f174598ce63bc353a083, type: 3}
@@ -3369,6 +3374,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318594582}
   m_CullTransparentMesh: 1
+--- !u!1 &1342447360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1342447361}
+  - component: {fileID: 1342447363}
+  - component: {fileID: 1342447362}
+  m_Layer: 5
+  m_Name: IgusLogoBannerImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1342447361
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342447360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 516540964}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 16, y: 16}
+  m_SizeDelta: {x: 192, y: 99.2}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1342447362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342447360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 538275bd7bd179d4aa64c6509e4750a3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1342447363
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342447360}
+  m_CullTransparentMesh: 1
 --- !u!1 &1393754764
 GameObject:
   m_ObjectHideFlags: 0
@@ -3591,6 +3671,7 @@ GameObject:
   - component: {fileID: 1441823671}
   - component: {fileID: 1441823670}
   - component: {fileID: 1441823669}
+  - component: {fileID: 1441823672}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -3611,7 +3692,7 @@ RectTransform:
   m_Children:
   - {fileID: 36829148}
   m_Father: {fileID: 516540964}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -3713,6 +3794,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441823667}
   m_CullTransparentMesh: 1
+--- !u!114 &1441823672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441823667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0a9ff0ef1824a41b8114ed6d271c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUsingPlatformExlusions: 1
+  supportedPlatforms: 
+  exludedPlatforms: 11000000
 --- !u!1 &1572242250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,7 +4240,7 @@ GameObject:
   - component: {fileID: 1798129003}
   - component: {fileID: 1798129002}
   m_Layer: 5
-  m_Name: IgusBannerImage
+  m_Name: IgumaniaBannerImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4167,8 +4263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -280}
-  m_SizeDelta: {x: 960, y: 496}
+  m_AnchoredPosition: {x: 0, y: -300}
+  m_SizeDelta: {x: 1680, y: 392}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798129002
 MonoBehaviour:
@@ -4190,7 +4286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 538275bd7bd179d4aa64c6509e4750a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6880f130b4ab4c94a915076ea4e47db7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4349,6 +4445,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481617589776006228, guid: 10e395855c26f174598ce63bc353a083, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439862215909382176, guid: 10e395855c26f174598ce63bc353a083, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663969129139499810, guid: 10e395855c26f174598ce63bc353a083, type: 3}
@@ -5327,6 +5427,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7439862215909382176, guid: 10e395855c26f174598ce63bc353a083, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7663969129139499810, guid: 10e395855c26f174598ce63bc353a083, type: 3}
       propertyPath: m_Name
       value: FirstProfilePanelObject
@@ -5440,6 +5544,10 @@ PrefabInstance:
     - target: {fileID: 8896752032333990680, guid: 1036fe337ae7a79438fbd29e2f4e44e6, type: 3}
       propertyPath: m_Name
       value: LoadingScreenManagerCanvasObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896752032333990680, guid: 1036fe337ae7a79438fbd29e2f4e44e6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8896752032333990685, guid: 1036fe337ae7a79438fbd29e2f4e44e6, type: 3}
       propertyPath: m_Pivot.x

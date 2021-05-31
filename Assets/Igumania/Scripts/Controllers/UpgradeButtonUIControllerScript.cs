@@ -56,7 +56,25 @@ namespace Igumania.Controllers
         {
             if (TryGetComponent(out Button upgrade_button))
             {
+                IProfile profile = GameManager.SelectedProfile;
                 UpgradeButton = upgrade_button;
+                if (upgrade is RobotPartObjectScript robot_part)
+                {
+                    IRobot selected_robot = null;
+                    foreach (ShopSelectionControllerScript shop_selection_controller in ShopSelectionControllerScript.EnabledControllers)
+                    {
+                        selected_robot = shop_selection_controller.SelectedRobot;
+                        if (selected_robot != null)
+                        {
+                            break;
+                        }
+                    }
+                    UpgradeButton.interactable = (selected_robot == null) ? profile.IsInstallingUpgradeAllowed(robot_part) : selected_robot.IsInstallingRobotPartAllowed(robot_part);
+                }
+                else
+                {
+                    UpgradeButton.interactable = (profile != null) && profile.IsInstallingUpgradeAllowed(upgrade);
+                }
                 UpgradeButton.onClick.AddListener(HandleButtonClickEvent);
             }
         }

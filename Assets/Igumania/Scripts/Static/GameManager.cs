@@ -22,5 +22,7 @@
         public static IProfile SelectedProfile => selectedProfile ??= Profiles.LoadProfile(selectedProfileIndex);
 
         public static void ReloadSelectedProfile() => selectedProfile = Profiles.LoadProfile(selectedProfileIndex);
+
+        public static void UnloadSelectedProfile() => selectedProfile = null;
     }
 }

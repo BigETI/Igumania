@@ -16,8 +16,8 @@ MonoBehaviour:
   itemDescriptionStringTranslation: {fileID: 11400000, guid: ac177821cce3c5149b2d3a4db55600c6, type: 2}
   iconSpriteTranslation: {fileID: 11400000, guid: 4a4ade6bbf272864e9265ec3269b3e22, type: 2}
   url: https://www.igus.com/info/harnessed-cables-readychain
-  cost: 0
-  profitAddition: 0
-  profitMultiplierAddition: 0
+  cost: 500
+  profitAddition: 200
+  profitMultiplierAddition: 1
   requiredUpgrades:
   - {fileID: 11400000, guid: b2f27acea5c86f34d9581a6b75860284, type: 2}
