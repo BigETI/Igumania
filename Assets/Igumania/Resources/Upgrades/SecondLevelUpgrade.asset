@@ -18,5 +18,5 @@ MonoBehaviour:
   url: 
   cost: 1000
   profitAddition: 100
-  profitMultiplierAddition: 10
+  profitMultiplierAddition: 0.16875
   requiredUpgrades: []

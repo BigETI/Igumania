@@ -18,6 +18,6 @@ MonoBehaviour:
   url: 
   cost: 100000
   profitAddition: 10000
-  profitMultiplierAddition: 100
+  profitMultiplierAddition: 0.16875
   requiredUpgrades:
   - {fileID: 11400000, guid: c6943a6baf2b31a4ab56201943919154, type: 2}

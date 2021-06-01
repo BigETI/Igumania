@@ -35,6 +35,10 @@ namespace Igumania
 
         public event UpgradeUninstalledDelegate OnUpgradeUninstalled;
 
+        public event RobotEnabledDelegate OnRobotEnabled;
+
+        public event RobotDisabledDelegate OnRobotDisabled;
+
         public Profile(byte profileIndex, string name, byte productionLevel, long money, IReadOnlyList<IRobot> robots, IReadOnlyList<UpgradeObjectScript> upgrades, IEnumerable<DialogEventObjectScript> passedDialogEvents)
         {
             if (upgrades == null)
@@ -228,12 +232,20 @@ namespace Igumania
 
         public IRobot CreateNewRobot(byte robotIndex)
         {
+            IRobot ret = new Robot(0.0f, 0.0f, Array.Empty<RobotPartObjectScript>());
             robots ??= Array.Empty<IRobot>();
             if (robotIndex >= robots.Length)
             {
                 Array.Resize(ref robots, robotIndex + 1);
             }
-            return robots[robotIndex] ??= new Robot(0.0f, 0.0f, Array.Empty<RobotPartObjectScript>());
+            IRobot old_robot = robots[robotIndex];
+            robots[robotIndex] = ret;
+            if (old_robot != null)
+            {
+                OnRobotDisabled?.Invoke(old_robot);
+            }
+            OnRobotEnabled?.Invoke(ret);
+            return ret;
         }
 
         public IRobot GetRobot(byte robotIndex) => (robotIndex < robots.Length) ? robots[robotIndex] : null;
@@ -261,6 +273,7 @@ namespace Igumania
             if (robot == null)
             {
                 robot = new Robot(elapsedTimeSinceLastLubrication, elapsedTimeSinceLastRepair, robotParts);
+                OnRobotEnabled?.Invoke(robot);
             }
             else
             {

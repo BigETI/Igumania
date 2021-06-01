@@ -49,6 +49,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1831647882055022997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3754559930584690554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd77fce1e702d9438214eb770aa209a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onProductionSpeedUpdated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3115366498455461036}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: set_speed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6258189247310101741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +90,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startObject: {fileID: 8792849144595883231}
   endObject: {fileID: 586567618854437634}
+--- !u!114 &5341922322007217076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3754559930584690554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd77fce1e702d9438214eb770aa209a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onProductionSpeedUpdated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3115366498455461036}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: set_speed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8792849144595883231
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c515f675cd23ef94cbfb1cd98999799a, type: 3}
       propertyPath: m_Name
-      value: Conveyor_Turn90 Variant
+      value: Turn90ConveyorEntityObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c515f675cd23ef94cbfb1cd98999799a, type: 3}
